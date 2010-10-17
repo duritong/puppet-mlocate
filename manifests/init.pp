@@ -9,7 +9,9 @@ class mlocate {
 
   file{'/etc/updatedb.conf':
     source => ["puppet:///modules/site-mlocate/updatedb/${fqdn}/updatedb.conf",
+               "puppet:///modules/site-mlocate/updatedb/${operatingsystem}/updatedb.conf",
                "puppet:///modules/site-mlocate/updatedb/updatedb.conf",
+               "puppet:///modules/mlocate/updatedb/${operatingsystem}/updatedb.conf",
                "puppet:///modules/mlocate/updatedb/updatedb.conf" ],
     require => Package['mlocate'],
     owner => root, group => 0, mode => 0644;
