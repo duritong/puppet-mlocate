@@ -11,6 +11,7 @@ class mlocate {
     source => ["puppet:///modules/site-mlocate/updatedb/${fqdn}/updatedb.conf",
                "puppet:///modules/site-mlocate/updatedb/${operatingsystem}/updatedb.conf",
                "puppet:///modules/site-mlocate/updatedb/updatedb.conf",
+               "puppet:///modules/mlocate/updatedb/${operatingsystem}/updatedb.conf.${lsbdistcodename}",
                "puppet:///modules/mlocate/updatedb/${operatingsystem}/updatedb.conf",
                "puppet:///modules/mlocate/updatedb/updatedb.conf" ],
     require => Package['mlocate'],
