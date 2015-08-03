@@ -8,13 +8,16 @@ class mlocate {
   }
 
   file{'/etc/updatedb.conf':
-    source => ["puppet:///modules/site_mlocate/updatedb/${::fqdn}/updatedb.conf",
-               "puppet:///modules/site_mlocate/updatedb/${::operatingsystem}/updatedb.conf",
-               "puppet:///modules/site_mlocate/updatedb/updatedb.conf",
-               "puppet:///modules/mlocate/updatedb/${::operatingsystem}/updatedb.conf.${::operatingsystemmajrelease}",
-               "puppet:///modules/mlocate/updatedb/${::operatingsystem}/updatedb.conf",
-               "puppet:///modules/mlocate/updatedb/updatedb.conf" ],
+    source => [ "puppet:///modules/site_mlocate/updatedb/${::fqdn}/updatedb.conf",
+                "puppet:///modules/site_mlocate/updatedb/${::operatingsystem}/updatedb.conf.${::operatingsystemmajrelease}",
+                "puppet:///modules/site_mlocate/updatedb/${::operatingsystem}/updatedb.conf",
+                'puppet:///modules/site_mlocate/updatedb/updatedb.conf',
+                "puppet:///modules/mlocate/updatedb/${::operatingsystem}/updatedb.conf.${::operatingsystemmajrelease}",
+                "puppet:///modules/mlocate/updatedb/${::operatingsystem}/updatedb.conf",
+                'puppet:///modules/mlocate/updatedb/updatedb.conf' ],
     require => Package['mlocate'],
-    owner => root, group => 0, mode => 0644;
+    owner   => root,
+    group   => 0,
+    mode    => '0644';
   }
 }
