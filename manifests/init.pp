@@ -17,7 +17,7 @@ class mlocate {
     mode   => '0644';
   }
 
-  if $facts['os']['family'] == 'RedHat' and versioncmp($facts['os']['release']['major'],8) >= 0 {
+  if $facts['os']['family'] == 'RedHat' and versioncmp($facts['os']['release']['major'],'8') >= 0 {
     service { 'mlocate-updatedb.timer':
       ensure  => running,
       enable  => true,
